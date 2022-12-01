@@ -38,6 +38,15 @@ local config = {
       -- end
       return config -- return final config table to use in require("null-ls").setup(config)
     end,
+    ["neo-tree"] = {
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
+      },
+    },
   },
 
   mappings = {
@@ -46,9 +55,13 @@ local config = {
       ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
     },
   },
+
+  polish = function()
+    vim.g.copilot_node_command = "~/.nvm/versions/node/v16*/bin/node"
+    vim.g.copilot_no_tab_map = true
+    vim.api.nvim_set_keymap("i", "<C-J>", "copilot#Accept()", { silent = true, expr = true })
+  end,
 }
 
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-J>", "copilot#Accept()", { silent = true, expr = true })
 
 return config
