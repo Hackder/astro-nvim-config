@@ -16,6 +16,12 @@ local config = {
           vim.g.mkdp_filetypes = { "markdown" }
         end,
       },
+      ['rose-pine/neovim'] = {
+        as = 'rose-pine',
+        config = function()
+          vim.cmd("colorscheme rose-pine")
+        end
+      }
     },
     telescope = {
       defaults = {
