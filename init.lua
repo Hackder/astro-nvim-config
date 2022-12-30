@@ -17,10 +17,7 @@ local config = {
         end,
       },
       ['rose-pine/neovim'] = {
-        as = 'rose-pine',
-        config = function()
-          vim.cmd("colorscheme rose-pine")
-        end
+        as = 'rose-pine'
       }
     },
     telescope = {
@@ -34,11 +31,11 @@ local config = {
       -- Check supported formatters and linters
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-      config.sources = {
-        -- Set a formatter
-        null_ls.builtins.formatting.prettier,
-      }
-      -- set up null-ls's on_attach function
+      -- config.sources = {
+      --   -- Set a formatter
+      --   null_ls.builtins.formatting.prettier,
+      -- }
+      -- -- set up null-ls's on_attach function
       -- NOTE: You can remove this on attach function to disable format on save
       -- config.on_attach = function(client)
       --     if client.resolved_capabilities.document_formatting then
@@ -62,10 +59,19 @@ local config = {
     },
   },
 
+  lsp = {
+    formatting = {
+      format_on_save = false,
+    },
+  },
+
+
   mappings = {
     n = {
       ["<leader>lk"] = { vim.lsp.buf.hover, desc = "Hover Documentation" },
-      ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
+      ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+      ["<F11>"] = { "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>" },
+      ["<leader>fg"] = { "<cmd>Telescope git_files<cr>", desc = "Search git files" }
     },
   },
 
@@ -75,6 +81,7 @@ local config = {
     vim.g.copilot_assume_mapped = true
     vim.g.copilot_tab_fallback = ""
     vim.api.nvim_set_keymap("i", "<C-J>", "copilot#Accept()", { silent = true, expr = true })
+    vim.cmd("colorscheme rose-pine")
   end,
 }
 
