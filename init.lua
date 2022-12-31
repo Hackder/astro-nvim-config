@@ -69,7 +69,7 @@ local config = {
   mappings = {
     n = {
       ["<leader>lk"] = { vim.lsp.buf.hover, desc = "Hover Documentation" },
-      ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+      ["<F7>"] = false,
       ["<F11>"] = { "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>" },
       ["<leader>fg"] = { "<cmd>Telescope git_files<cr>", desc = "Search git files" }
     },
